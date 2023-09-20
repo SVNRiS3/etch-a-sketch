@@ -1,6 +1,7 @@
-const GRID_SIZE = 5;
+let gridSize = 50;
 
 const gridContainer = document.querySelector('.grid-container');
+const createBoardButton = document.querySelector('.create-board-button')
 
 
 
@@ -13,21 +14,21 @@ function createSquare() {
 function createRow() {
     let row = document.createElement('row');
     row.classList.add('row');
-    for (let i = 0; i < GRID_SIZE; i++) {
+    for (let i = 0; i < gridSize; i++) {
         row.appendChild(createSquare());
     }
     return row;
 }
 
 function gridConstructor() {
-    for (let i = 0; i < GRID_SIZE; i++) {
+    for (let i = 0; i < gridSize; i++) {
         gridContainer.appendChild(createRow());
     }
 }
 
 function setupSquares() {
     const squares = document.querySelectorAll('.square');
-    let squareSize = 960 / GRID_SIZE;
+    let squareSize = 960 / gridSize;
     squares.forEach((square) => {
         square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px`);
         square.addEventListener('mouseover', (e) => {
@@ -36,9 +37,16 @@ function setupSquares() {
     })
 }
 
+function createNewBoard() {
+    gridSize = prompt("Number of squares in a row: ", "16");
+    gridContainer.innerHTML = '';
+    runApp();
+}
+
 function runApp() {
     gridConstructor();
     setupSquares();
 }
 
+createBoardButton.addEventListener('click', () => { createNewBoard() })
 runApp();

@@ -24,3 +24,16 @@ body {
 .square--active {
     background: gray;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.create-board-button {
+    padding: 10px 20px;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 10px;
+}
