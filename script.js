@@ -1,5 +1,5 @@
 let gridSize = 50;
-
+console.log(typeof gridSize);
 const gridContainer = document.querySelector('.grid-container');
 const createBoardButton = document.querySelector('.create-board-button')
 
@@ -38,7 +38,8 @@ function setupSquares() {
 }
 
 function createNewBoard() {
-    gridSize = prompt("Number of squares in a row: ", "16");
+    do gridSize = +prompt("Number of squares in a row: ", "16");
+    while ((gridSize > 100 || gridSize < 1) || isNaN(gridSize))
     gridContainer.innerHTML = '';
     runApp();
 }
