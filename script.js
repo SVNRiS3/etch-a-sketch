@@ -24,4 +24,18 @@ function gridConstructor(gridSize) {
     }
 }
 
-gridConstructor(GRID_SIZE);
+function colorSquare() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+        square.addEventListener('mouseover', (e) => {
+            e.target.classList.add('square--active');
+        })
+    })
+}
+
+function runApp() {
+    gridConstructor(GRID_SIZE);
+    colorSquare();
+}
+
+runApp();
