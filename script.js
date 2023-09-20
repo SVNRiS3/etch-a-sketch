@@ -1,6 +1,7 @@
-const GRID_SIZE = 16;
+const GRID_SIZE = 5;
 
 const gridContainer = document.querySelector('.grid-container');
+
 
 
 function createSquare() {
@@ -9,24 +10,26 @@ function createSquare() {
     return square;
 }
 
-function createRow(gridSize) {
+function createRow() {
     let row = document.createElement('row');
     row.classList.add('row');
-    for (let i = 0; i < gridSize; i++) {
+    for (let i = 0; i < GRID_SIZE; i++) {
         row.appendChild(createSquare());
     }
     return row;
 }
 
-function gridConstructor(gridSize) {
-    for (let i = 0; i < gridSize; i++) {
-        gridContainer.appendChild(createRow(gridSize));
+function gridConstructor() {
+    for (let i = 0; i < GRID_SIZE; i++) {
+        gridContainer.appendChild(createRow());
     }
 }
 
-function colorSquare() {
+function setupSquares() {
     const squares = document.querySelectorAll('.square');
+    let squareSize = 960 / GRID_SIZE;
     squares.forEach((square) => {
+        square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px`);
         square.addEventListener('mouseover', (e) => {
             e.target.classList.add('square--active');
         })
@@ -34,8 +37,8 @@ function colorSquare() {
 }
 
 function runApp() {
-    gridConstructor(GRID_SIZE);
-    colorSquare();
+    gridConstructor();
+    setupSquares();
 }
 
 runApp();
