@@ -32,7 +32,8 @@ function setupSquares() {
     squares.forEach((square) => {
         square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px`);
         square.addEventListener('mouseover', (e) => {
-            e.target.classList.add('square--active');
+            // e.target.classList.add('square--active');
+            e.target.style.background = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
         })
     })
 }
